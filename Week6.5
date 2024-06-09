@@ -1,0 +1,12 @@
+def find_mapping(A, B):
+    mapping = {}
+    for i, num in enumerate(B):
+        mapping[num] = i
+    return [mapping[num] for num in A]
+
+if __name__ == "__main__":
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+    mapping = find_mapping(A, B)
+    print(*mapping)
