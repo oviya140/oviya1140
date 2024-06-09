@@ -1,0 +1,20 @@
+n = int(input())
+students = {}
+for _ in range(n):
+    name, test, assignment, lab = input().split()
+    test = int(test)
+    assignment = int(assignment)
+    lab = int(lab)
+    students[name] = {'test': test, 'assignment': assignment, 'lab': lab}
+max_avg_score = max(sum(scores.values()) / len(scores) for scores in students.values())
+highest_avg_students = [name for name, scores in students.items() if sum(scores.values()) / len(scores) == max_avg_score]
+max_assignment = max(students.values(), key=lambda x: x['assignment'])['assignment']
+highest_assignment_students = [name for name, scores in students.items() if scores['assignment'] == max_assignment]
+min_lab = min(students.values(), key=lambda x: x['lab'])['lab']
+lowest_lab_students = [name for name, scores in students.items() if scores['lab'] == min_lab]
+min_avg_score = min(sum(scores.values()) / len(scores) for scores in students.values())
+lowest_avg_students = [name for name, scores in students.items() if sum(scores.values()) / len(scores) == min_avg_score]
+print("\n".join(sorted(highest_avg_students)))
+print(" ".join(sorted(highest_assignment_students)))
+print(" ".join(sorted(lowest_lab_students)))
+print("\n".join(sorted(lowest_avg_students)))
